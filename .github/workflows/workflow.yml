@@ -21,10 +21,12 @@ jobs:
     with:
       environmentType: Test
       resourceGroupName: rg-bicep-environments-test
+      reviewApiUrl: https://sandbox.contoso.com/reviews
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID_TEST }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      reviewApiKey: ${{ secrets.REVIEW_API_KEY_TEST }}
 
   deploy-production:
     uses: ./.github/workflows/deploy.yml
@@ -32,7 +34,9 @@ jobs:
     with:
       environmentType: Production
       resourceGroupName: rg-bicep-environments-production
+      reviewApiUrl: https://api.contoso.com/reviews
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID_PRODUCTION }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      reviewApiKey: ${{ secrets.REVIEW_API_KEY_PRODUCTION }}
